@@ -53,11 +53,13 @@ blob_fixups: blob_fixups_user_type = {
         .replace_needed(
             'android.media.audio.common.types-V4-ndk.so',
             'android.media.audio.common.types-V3-ndk.so'
-    )
-        .replace_needed(
-            'android.hardware.audio.effect-V2-ndk.so',
-            'android.hardware.audio.effect-V3-ndk.so'
     ),
+    (
+        'vendor/lib64/soundfx/libswdapaidl.so',
+        'vendor/lib64/soundfx/libswgamedapaidl.so',
+        'vendor/lib64/soundfx/libswspatializeraidl.so',
+    ): blob_fixup()
+        .replace_needed('libaudio_aidl_conversion_common_ndk.so', 'libaudio_aidl_conversion_common_ndk_prebuilt.so'),
     (
         'vendor/lib64/libcodec2_soft_ac4dec.so',
         'vendor/lib64/libcodec2_soft_ddpdec.so',
